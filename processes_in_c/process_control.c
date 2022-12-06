@@ -40,7 +40,7 @@ int main(int argc, char **argv){
   int arg = atoi(argv[1]); // Parse str  value of arguments to int type
   //if arguments provided are lesser than 0, abort program. print error message
   if (arg<1){ 
-  printf("Error. Enter a number greater than 0\n");
+  perror("Error. Enter a number greater than 0\n");
   exit(0); // exit the program
   }
 
@@ -80,7 +80,7 @@ int parent(int argument){
         exit(1); 
         }
         else if (pid==-1){ 
-        printf("Failed to create child processes\n");
+        perror("Failed to create child processes\n");
         exit(2); 
         }
         else{
@@ -101,7 +101,7 @@ int child(int argument){
         break; 
         }
         else if (pid < 0){ 
-        printf("Failed to create child processes\n");
+        perror("Failed to create child processes\n");
         exit(2); 
         }
         else{ 
