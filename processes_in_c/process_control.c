@@ -2,7 +2,7 @@
  * This is a program for process creation and termination. Multiple child processes created from one parent process 
  * child processes print "hello" together with their PIDS, then exit. Uses fork() and wait().
 */
-//Author : S M
+//Author : S S M
 
 /**
  * Logic for process creation:
@@ -14,7 +14,7 @@
 
 //headers go here
 #include <stdlib.h> //for atoi() ===> conversion of declared str type to int type
-#include <sys/types.h> //pid
+#include <sys/types.h> 
 #include <stdio.h> //for input output 
 #include <sys/wait.h> //wait() system call
 #include <unistd.h> //fork() system call
@@ -76,7 +76,7 @@ int parent(int argument){
          * else print error message and exit.
         */
         if (pid==0){ 
-        printf("Hello. My PID is %d. I am a child process\n", getpid()); 
+        printf("Hello. My PID is %d. I am a child process. My parent is %d\n", getpid(), getppid()); 
         exit(1); 
         }
         else if (pid==-1){ 
@@ -90,7 +90,7 @@ int parent(int argument){
 }
 
 int child(int argument){
-    printf("\n\nHello. I am a child creating more child processes\n");
+    printf("\n\nHello. I am a child creating more children\n");
     printf("--------------------------------------------------\n");
     int pid; 
     
@@ -105,7 +105,7 @@ int child(int argument){
         exit(2); 
         }
         else{ 
-            printf("Hello. My PID is %d. I am a child process\n", getpid()); 
+            printf("Hello. My PID is %d. I am a child process. My parent is %d\n", getpid(), getppid()); 
 
         }
     }
